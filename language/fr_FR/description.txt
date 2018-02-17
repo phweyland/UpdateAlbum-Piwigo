@@ -1,0 +1,1 @@
+Permet de mettre à jour plusieurs photos à la fois dans un album.

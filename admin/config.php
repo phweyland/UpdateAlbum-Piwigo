@@ -68,6 +68,17 @@ if (isset($_POST['update']) and isset($_FILES['imagesfiles']))
 		$nbErrors = 0;
 		$inserts = array();
 		
+		// list all files in this album
+		$query = '
+SELECT
+    i.id,
+    i.file
+  FROM '.IMAGES_TABLE.' AS i
+    JOIN '.IMAGE_CATEGORY_TABLE.' AS ic ON image_id = i.id
+  WHERE ic.category_id = '.$category['id'].'
+;';
+		$cat_files = query2array($query, 'file', 'id');
+
 		for($i=0; $i<$nbFiles; $i++) {
 			if ($_FILES['imagesfiles']['error'][$i] !== UPLOAD_ERR_OK) {
 				$error_message = file_upload_error_message($_FILES['imagesfiles']['error'][$i]);
@@ -79,15 +90,13 @@ if (isset($_POST['update']) and isset($_FILES['imagesfiles']))
 				$nbErrors++;
 			}
 			else {
-			// identify the corresponding image in the album			
-				$query = '
-				SELECT i.id, i.file
-				  FROM '.IMAGES_TABLE.' AS i
-					JOIN '.IMAGE_CATEGORY_TABLE.' AS ic ON image_id = i.id
-				  WHERE ic.category_id = '.$category['id'].' AND i.file = \''.$_FILES['imagesfiles']['name'][$i].'\'
-				;';
+			// identify the corresponding image in the album
+				$image = null;
+				if (isset($cat_files[ $_FILES['imagesfiles']['name'][$i] ]))
+				{
+					$image = array('id' => $cat_files[ $_FILES['imagesfiles']['name'][$i] ]);
+				}
 
-				$image = pwg_db_fetch_assoc(pwg_query($query));
 				if (!empty($image)) { // if image found 
 					if ($conf['updatealbum']['update']) { // if update flag then update it
 						add_uploaded_file(

@@ -6,6 +6,7 @@ Description: This plugin updates selected photos.
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=861
 Author: PhWeyland
 Author URI: http://ph-wd.com
+Has Settings: true
 */
 
 /**

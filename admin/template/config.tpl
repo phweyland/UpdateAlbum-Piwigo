@@ -1,4 +1,4 @@
-{combine_css path=$UPDATEALBUM_PATH|@cat:"admin/template/style.css"}
+{* {combine_css path=$UPDATEALBUM_PATH|@cat:"admin/template/style.css"} *}
 
 {html_style}
   h4 {

@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: Update Album
-Version: 1.2.d
-Description: This plugin updates selected photos. 
+Version: 1.3.a
+Description: This plugin updates selected photos.
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=861
 Author: PhWeyland
 Author URI: http://ph-wd.com
@@ -36,14 +36,11 @@ add_event_handler('init', 'updatealbum_init');
 /*
  * this is the common way to define event functions: create a new function for each event you want to handle
  */
-if (defined('IN_ADMIN'))
-{
+//if (defined('IN_ADMIN'))
+//{
   // file containing all admin handlers functions
-  $admin_file = UPDATEALBUM_PATH . 'include/admin_events.inc.php';
-  // admin plugins menu link
-  add_event_handler('get_admin_plugin_menu_links', 'updatealbum_admin_plugin_menu_links',
-    EVENT_HANDLER_PRIORITY_NEUTRAL, $admin_file);
-}
+//  $admin_file = UPDATEALBUM_PATH . 'include/admin_events.inc.php';
+//}
 
 /**
  * plugin initialization

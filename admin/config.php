@@ -27,7 +27,7 @@ if (isset($_POST['save']))
 	$conf['updatealbum']['addtocaddie'] = isset($_POST['addtocaddieFlag']);
 	$conf['updatealbum']['verbose'] = isset($_POST['verboseFlag']);
 	if (isset($_POST['parent_cat'])) $conf['updatealbum']['parent_cat'] = $_POST['parent_cat'];
-	
+
 	conf_update_param('updatealbum', $conf['updatealbum']);
 }
 // check category
@@ -43,7 +43,7 @@ if (!empty($conf['updatealbum']['parent_cat'])) {
 if (isset($_POST['update']) and isset($_FILES['imagesfiles']))
 {
 	include_once(PHPWG_ROOT_PATH.'admin/include/functions_upload.inc.php');
-  
+
 	if ($_FILES['imagesfiles']['error'][0] == UPLOAD_ERR_NO_FILE) {
 //		$page['infos'][] = l10n('No file selected');
 	}
@@ -67,7 +67,7 @@ if (isset($_POST['update']) and isset($_FILES['imagesfiles']))
 		$nbCreated = 0;
 		$nbErrors = 0;
 		$inserts = array();
-		
+
 		// list all files in this album
 		$query = '
 SELECT
@@ -97,7 +97,7 @@ SELECT
 					$image = array('id' => $cat_files[ $_FILES['imagesfiles']['name'][$i] ]);
 				}
 
-				if (!empty($image)) { // if image found 
+				if (!empty($image)) { // if image found
 					if ($conf['updatealbum']['update']) { // if update flag then update it
 						add_uploaded_file(
 							$_FILES['imagesfiles']['tmp_name'][$i],
@@ -120,12 +120,12 @@ SELECT
 							$_FILES['imagesfiles']['name'][$i],
 							array($category['id'])
 							);
-							
+
 							$inserts[] = array(
 								'user_id' => $user['id'],
 								'element_id' => $image['id'],
 							);
-							
+
 						if ($conf['updatealbum']['verbose']) $page['infos'][] = $_FILES['imagesfiles']['name'][$i].'  : '.l10n('Added image').' -> '.$image['id'];
 						$nbCreated++;
 					}
@@ -136,6 +136,7 @@ SELECT
 			}
 		}
 		$page['infos'][] = $nbUpdated.' '.l10n('Updated images').'; '.$nbCreated.' '.l10n('Created images').'; '.$nbErrors.' '.l10n('Error(s)');
+    empty_lounge(true);
 		if ($conf['updatealbum']['addtocaddie'] and $nbCreated) {
 			 mass_inserts(
 				CADDIE_TABLE,
@@ -153,7 +154,7 @@ if (isset($category['id'])) {
 	} else {
 		$categoryName = $category['name'];
 	}
-		
+
 	// public album link
 	$template->assign(
 	array(
@@ -161,7 +162,7 @@ if (isset($category['id'])) {
 		)
 	);
 
-	$query = 'SELECT count(*) as nblines 
+	$query = 'SELECT count(*) as nblines
 	  FROM '.IMAGE_CATEGORY_TABLE.'
 	  WHERE category_id = '.$category['id'].'
 	  ;';

@@ -1,0 +1,1 @@
+Uppdatera flera foton på en gång i ett angivet album.

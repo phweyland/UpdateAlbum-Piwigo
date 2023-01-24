@@ -1,0 +1,1 @@
+Carica in una volta molteplici fotografie in un dato album.

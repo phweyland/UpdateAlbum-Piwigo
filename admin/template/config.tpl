@@ -84,7 +84,7 @@
 {if isset($url_albumproperties) }
   <li><a class="icon-pencil" href=" {$url_albumproperties}">{'Edit'|@translate}</a></li>
 {/if}
-{if cat_admin_access($CAT_ID)}
+{if isset(CAT_ADMIN_ACCESS) and $CAT_ADMIN_ACCESS}
   <li><a class="icon-eye" href="{$U_JUMPTO}">{'jump to album'|@translate} →</a></li>
 {/if}
 {if isset($url_caddie) }

@@ -6,7 +6,7 @@
 // | file that was distributed with this source code.                      |
 // +-----------------------------------------------------------------------+
 $lang['Manage caddie\'s photos'] = 'Administrar fotos de "caddie"';
-$lang['Add new images to caddie'] = 'Añadir nuevas imágenes a "caddie"';
+$lang['Add new images to caddie'] = 'Añadir nuevas imágenes a la cesta';
 $lang['Display detailed actions done'] = 'Mostrar las acciones detalladas finalizadas';
 $lang['Update existing images'] = 'Actualizar imágenes existentes';
 $lang['Updated image'] = 'Imagen actualizada';

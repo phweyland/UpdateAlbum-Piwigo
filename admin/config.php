@@ -176,6 +176,7 @@ if (isset($category['id'])) {
 	  $template->assign(
 	  array (
 		'CAT_ID'            => $category['id'],
+		'CAT_ADMIN_ACCESS' => cat_admin_access($category['id']),
 		'U_MANAGE_ELEMENTS' => $base_url.'batch_manager&amp;filter=album-'.$category['id'],
 		'nb_category' => $nbImagesCategory,
 		)
